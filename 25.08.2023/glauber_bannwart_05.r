@@ -11,8 +11,9 @@
 #     }
 # }
 
+# TO test execution time
+# Rprof("output.prof")
 # Using vector
-
 getnumero = as.numeric(readline(prompt="Digite um número: "));
 if (getnumero < 2 | getnumero > 20) {
     print("Digite um número entre 2 e 20");
@@ -24,3 +25,7 @@ if (getnumero < 2 | getnumero > 20) {
     }
     print(tabuada);
 }
+
+# Last part of the execution test
+# Rprof(NULL)
+# print(summaryRprof("output.prof"));
