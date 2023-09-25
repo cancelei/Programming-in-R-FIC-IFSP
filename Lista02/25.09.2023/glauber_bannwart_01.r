@@ -1,3 +1,5 @@
+# JOGO DA VELHA 2 JOGADORES 3X3
+
 TAMANHO <- 3
 VAZIO <- 0
 JOGADOR1 <- 1
@@ -10,8 +12,10 @@ jogadas <- 0
 venceu <- FALSE
 
 # Read player names
-nome1 <- readline("Nome do jogador 1: ")
-nome2 <- readline("Nome do jogador 2: ")
+cat("Nome do jogador 1: ")
+nome1 <- scan(file = "stdin", n = 1, what = character())
+cat("Nome do jogador 2: ")
+nome2 <- scan(file = "stdin", n = 1, what = character())
 
 # Function to check for a winner
 check_winner <- function(board, player) {
@@ -39,24 +43,23 @@ while (!venceu && jogadas < TAMANHO * TAMANHO) {
   # Read the move
 repeat {
   cat("Jogador ", ifelse(jogador == JOGADOR1, nome1, nome2), ": ")
-  jogada <- strsplit(readline(), " ")[[1]]
+  jogada <- scan(file = "stdin", n = 2, what = integer(), quiet = TRUE)
   
   if (length(jogada) < 2) {
     cat("Please enter both row and column, separated by a space.\n")
     next
   }
   
-  linha <- as.integer(jogada[1])
-  coluna <- as.integer(jogada[2])
+  linha <- jogada[1]
+  coluna <- jogada[2]
   
-  if (is.na(linha) || is.na(coluna) || linha < 1 || linha > TAMANHO || coluna < 1 || coluna > TAMANHO || tabuleiro[linha, coluna] != VAZIO) {
+  if (linha < 1 || linha > TAMANHO || coluna < 1 || coluna > TAMANHO || tabuleiro[linha, coluna] != VAZIO) {
     cat("Jogada inválida! Please enter valid row and column.\n")
   } else {
     break
   }
 }
 
-  
   # Validate the move
   if (linha < 1 || linha > TAMANHO || coluna < 1 || coluna > TAMANHO || tabuleiro[linha, coluna] != VAZIO) {
     cat("Jogada inválida!\n")
